@@ -1,10 +1,10 @@
 type Film {
   title: String
-  episodeId: Int
-  openingCrawl: String
+  episode_id: Int
+  opening_crawl: String
   director: String
   producer: String
-  releaseDate: String
+  release_date: String
   characters: [String]
   planets: [String]
   starships: [String]
