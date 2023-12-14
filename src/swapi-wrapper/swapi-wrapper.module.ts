@@ -4,6 +4,7 @@ import { HttpExtensionModule } from 'src/http-extension/http-extension.module';
 
 @Module({
   imports: [HttpExtensionModule],
-  providers: [SwapiWrapperService]
+  providers: [SwapiWrapperService],
+  exports: [SwapiWrapperService]
 })
 export class SwapiWrapperModule {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HttpExtensionService } from 'src/http-extension/http-extension.service';
 
-type UrlPath = 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles';
+export type UrlPath = 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles';
 
 @Injectable()
 export class SwapiWrapperService {
