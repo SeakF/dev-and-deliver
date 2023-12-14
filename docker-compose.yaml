@@ -4,3 +4,18 @@ services:
     image: dev-and-deliver:latest
     ports:
       - '3000:3000'
+    depends_on:
+      - cache
+    networks:
+      - dev_and_deliver
+
+  cache:
+    image: redis:7.2.3-alpine
+    ports:
+      - '6379:6379'
+    command: ['redis-server', '--save', '60 1']
+    networks:
+      - dev_and_deliver
+
+networks:
+  dev_and_deliver:
