@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilmsResolver } from './films.resolver';
+import { SwapiWrapperModule } from '../swapi-wrapper/swapi-wrapper.module';
+import { FilmsService } from './films.service';
 
 describe('FilmsResolver', () => {
   let resolver: FilmsResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FilmsResolver],
+      imports: [SwapiWrapperModule],
+      providers: [FilmsResolver, FilmsService],
     }).compile();
 
     resolver = module.get<FilmsResolver>(FilmsResolver);

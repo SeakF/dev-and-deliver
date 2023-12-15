@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { SwapiWrapperModule } from 'src/swapi-wrapper/swapi-wrapper.module';
+import { SwapiWrapperModule } from '../swapi-wrapper/swapi-wrapper.module';
 import { FilmsResolver } from './films.resolver';
+import { FilmsService } from './films.service';
 
 @Module({
   imports: [SwapiWrapperModule],
-  providers: [FilmsResolver]
+  providers: [FilmsResolver, FilmsService]
 })
 export class FilmsModule {}

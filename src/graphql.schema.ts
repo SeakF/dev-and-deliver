@@ -35,6 +35,8 @@ export abstract class IQuery {
 
     abstract films(page?: Nullable<number>): Nullable<Films> | Promise<Nullable<Films>>;
 
+    abstract uniqueWordOccurances(): Nullable<Nullable<string>[]> | Promise<Nullable<Nullable<string>[]>>;
+
     abstract planet(id: number): Nullable<Planet> | Promise<Nullable<Planet>>;
 
     abstract planets(page?: Nullable<number>): Nullable<Planets> | Promise<Nullable<Planets>>;

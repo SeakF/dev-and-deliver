@@ -1,12 +1,16 @@
 import { Args, Resolver, Query } from '@nestjs/graphql';
-import { SwapiWrapperService } from 'src/swapi-wrapper/swapi-wrapper.service';
-import { UrlPath } from 'src/swapi-wrapper/swapi-wrapper.service';
+import { SwapiWrapperService } from '../swapi-wrapper/swapi-wrapper.service';
+import { UrlPath } from '../swapi-wrapper/swapi-wrapper.service';
+import { FilmsService } from './films.service';
 
 @Resolver()
 export class FilmsResolver {
     private path: Extract<UrlPath, 'films'> = 'films';
 
-    constructor(private readonly swapiWrapperService: SwapiWrapperService) {}
+    constructor(
+        private readonly swapiWrapperService: SwapiWrapperService,
+        private readonly filmsService: FilmsService
+    ) {}
 
     @Query()
     async film(@Args('id') id: number) {
@@ -16,5 +20,10 @@ export class FilmsResolver {
     @Query()
     async films(@Args('page') page?: number) {
         return await this.swapiWrapperService.findAll(this.path, page);
+    }
+
+    @Query()
+    async uniqueWordOccurances() {
+        return await this.filmsService.countWordsInOpeningCrawl();
     }
 }
