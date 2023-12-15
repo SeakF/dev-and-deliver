@@ -1,4 +1,9 @@
 import { Module } from '@nestjs/common';
+import { SwapiWrapperModule } from 'src/swapi-wrapper/swapi-wrapper.module';
+import { VehiclesResolver } from './vehicles.resolver';
 
-@Module({})
+@Module({
+  imports: [SwapiWrapperModule],
+  providers: [VehiclesResolver]
+})
 export class VehiclesModule {}
