@@ -1,18 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { SwapiWrapperService } from '../swapi-wrapper/swapi-wrapper.service';
+import { PeopleService } from '../people/people.service';
 
 @Injectable()
 export class FilmsService {
-    constructor(private readonly swapiWrapperService: SwapiWrapperService) {}
+    constructor(
+        private readonly swapiWrapperService: SwapiWrapperService,
+        private readonly peopleService: PeopleService
+    ) {}
+
+    async findMostPopularCharacterInOpenings() {
+        const allOpeningCrawls = await this.getAllOpeningCrawls();
+        const parsedOpeningCrawls = this.parseOpeningCrawls(allOpeningCrawls);
+        
+        const characterNames = await this.peopleService.getAllNamesWithoutPagination();
+
+        return this.findMatchingNames(characterNames, parsedOpeningCrawls);
+    }
 
     async countWordsInOpeningCrawl(): Promise<string[]> {
         const allOpeningCrawls = await this.getAllOpeningCrawls();
-        
         const parsedOpeningCrawls = this.parseOpeningCrawls(allOpeningCrawls);
         
         const uniqueWordOccurances = this.countWords(parsedOpeningCrawls);
         
-        return uniqueWordOccurances;
+        return this.parseToArray(uniqueWordOccurances);
     }
 
     private async getAllOpeningCrawls(currentPage: number = 1): Promise<string[]> {
@@ -60,7 +72,7 @@ export class FilmsService {
             }
         }
         
-        return this.parseToArray(uniqueWordsCount);
+        return uniqueWordsCount;
     }
 
     private parseToArray(uniqueWordsCount: Record<string, number>) {
@@ -70,5 +82,26 @@ export class FilmsService {
         }
 
         return arrayFromObject;
+    }
+
+    private findMatchingNames(names: string[], parsedOpeningCrawls: string[]) {
+        const occurrences: Record<string, number> = {};
+
+        for (const name of names) {
+            const regex = new RegExp(`\\b${name}\\b`, 'gi');
+    
+            for (const openingCrawl of parsedOpeningCrawls) {
+                const matches = openingCrawl.match(regex);
+    
+                if (matches) {
+                    occurrences[name] = (occurrences[name] || 0) + matches.length;
+                }
+            }
+        }
+
+        const mostOccurrences = Math.max(...Object.values(occurrences));
+        const resultNames = Object.keys(occurrences).filter(name => occurrences[name] == mostOccurrences);
+    
+        return resultNames;
     }
 }

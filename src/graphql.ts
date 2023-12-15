@@ -30,10 +30,15 @@ export interface Films {
     data?: Nullable<Nullable<Film>[]>;
 }
 
+export interface UniqueWordOccurancesAndMostPopularCharacters {
+    mostPopularCharacters?: Nullable<Nullable<string>[]>;
+    uniqueWordOccurances?: Nullable<Nullable<string>[]>;
+}
+
 export interface IQuery {
     film(id: number): Nullable<Film> | Promise<Nullable<Film>>;
     films(page?: Nullable<number>): Nullable<Films> | Promise<Nullable<Films>>;
-    uniqueWordOccurances(): Nullable<Nullable<string>[]> | Promise<Nullable<Nullable<string>[]>>;
+    uniqueWordOccurancesAndMostPopularCharacters(): Nullable<UniqueWordOccurancesAndMostPopularCharacters> | Promise<Nullable<UniqueWordOccurancesAndMostPopularCharacters>>;
     planet(id: number): Nullable<Planet> | Promise<Nullable<Planet>>;
     planets(page?: Nullable<number>): Nullable<Planets> | Promise<Nullable<Planets>>;
     species(id: number): Nullable<Species> | Promise<Nullable<Species>>;

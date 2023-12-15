@@ -20,8 +20,13 @@ type Films {
   data: [Film]
 }
 
+type UniqueWordOccurancesAndMostPopularCharacters {
+  mostPopularCharacters: [String]
+  uniqueWordOccurances: [String]
+}
+
 type Query {
   film(id: Int!): Film
   films(page: Int): Films
-  uniqueWordOccurances: [String]
+  uniqueWordOccurancesAndMostPopularCharacters: UniqueWordOccurancesAndMostPopularCharacters
 }

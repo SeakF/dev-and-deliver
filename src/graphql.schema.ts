@@ -30,12 +30,17 @@ export class Films {
     data?: Nullable<Nullable<Film>[]>;
 }
 
+export class UniqueWordOccurancesAndMostPopularCharacters {
+    mostPopularCharacters?: Nullable<Nullable<string>[]>;
+    uniqueWordOccurances?: Nullable<Nullable<string>[]>;
+}
+
 export abstract class IQuery {
     abstract film(id: number): Nullable<Film> | Promise<Nullable<Film>>;
 
     abstract films(page?: Nullable<number>): Nullable<Films> | Promise<Nullable<Films>>;
 
-    abstract uniqueWordOccurances(): Nullable<Nullable<string>[]> | Promise<Nullable<Nullable<string>[]>>;
+    abstract uniqueWordOccurancesAndMostPopularCharacters(): Nullable<UniqueWordOccurancesAndMostPopularCharacters> | Promise<Nullable<UniqueWordOccurancesAndMostPopularCharacters>>;
 
     abstract planet(id: number): Nullable<Planet> | Promise<Nullable<Planet>>;
 
