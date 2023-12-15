@@ -42,6 +42,10 @@ export abstract class IQuery {
     abstract species(id: number): Nullable<Species> | Promise<Nullable<Species>>;
 
     abstract allSpecies(page?: Nullable<number>): Nullable<AllSpecies> | Promise<Nullable<AllSpecies>>;
+
+    abstract starship(id: number): Nullable<Starship> | Promise<Nullable<Starship>>;
+
+    abstract starships(page?: Nullable<number>): Nullable<Starships> | Promise<Nullable<Starships>>;
 }
 
 export class Planet {
@@ -87,6 +91,31 @@ export class Species {
 export class AllSpecies {
     page?: Nullable<number>;
     data?: Nullable<Nullable<Species>[]>;
+}
+
+export class Starship {
+    name?: Nullable<string>;
+    model?: Nullable<string>;
+    manufacturer?: Nullable<string>;
+    cost_in_credits?: Nullable<string>;
+    length?: Nullable<string>;
+    max_atmosphering_speed?: Nullable<string>;
+    crew?: Nullable<string>;
+    passengers?: Nullable<string>;
+    cargo_capacity?: Nullable<string>;
+    consumables?: Nullable<string>;
+    hyperdrive_rating?: Nullable<string>;
+    MGLT?: Nullable<string>;
+    starship_class?: Nullable<string>;
+    films?: Nullable<Nullable<string>[]>;
+    created?: Nullable<string>;
+    edited?: Nullable<string>;
+    url?: Nullable<string>;
+}
+
+export class Starships {
+    page?: Nullable<number>;
+    data?: Nullable<Nullable<Starship>[]>;
 }
 
 type Nullable<T> = T | null;

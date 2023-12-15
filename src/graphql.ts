@@ -37,6 +37,8 @@ export interface IQuery {
     planets(page?: Nullable<number>): Nullable<Planets> | Promise<Nullable<Planets>>;
     species(id: number): Nullable<Species> | Promise<Nullable<Species>>;
     allSpecies(page?: Nullable<number>): Nullable<AllSpecies> | Promise<Nullable<AllSpecies>>;
+    starship(id: number): Nullable<Starship> | Promise<Nullable<Starship>>;
+    starships(page?: Nullable<number>): Nullable<Starships> | Promise<Nullable<Starships>>;
 }
 
 export interface Planet {
@@ -82,6 +84,31 @@ export interface Species {
 export interface AllSpecies {
     page?: Nullable<number>;
     data?: Nullable<Nullable<Species>[]>;
+}
+
+export interface Starship {
+    name?: Nullable<string>;
+    model?: Nullable<string>;
+    manufacturer?: Nullable<string>;
+    cost_in_credits?: Nullable<string>;
+    length?: Nullable<string>;
+    max_atmosphering_speed?: Nullable<string>;
+    crew?: Nullable<string>;
+    passengers?: Nullable<string>;
+    cargo_capacity?: Nullable<string>;
+    consumables?: Nullable<string>;
+    hyperdrive_rating?: Nullable<string>;
+    MGLT?: Nullable<string>;
+    starship_class?: Nullable<string>;
+    films?: Nullable<Nullable<string>[]>;
+    created?: Nullable<string>;
+    edited?: Nullable<string>;
+    url?: Nullable<string>;
+}
+
+export interface Starships {
+    page?: Nullable<number>;
+    data?: Nullable<Nullable<Starship>[]>;
 }
 
 type Nullable<T> = T | null;
