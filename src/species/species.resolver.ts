@@ -3,18 +3,18 @@ import { SwapiWrapperService } from 'src/swapi-wrapper/swapi-wrapper.service';
 import { UrlPath } from 'src/swapi-wrapper/swapi-wrapper.service';
 
 @Resolver()
-export class PlanetsResolver {
-    private path: Extract<UrlPath, 'planets'> = 'planets';
+export class SpeciesResolver {
+    private path: Extract<UrlPath, 'species'> = 'species';
 
     constructor(private readonly swapiWrapperService: SwapiWrapperService) {}
 
     @Query()
-    async planet(@Args('id') id: number) {
+    async species(@Args('id') id: number) {
         return await this.swapiWrapperService.findOne(this.path, id)
     }
 
     @Query()
-    async planets(@Args('page') page?: number) {
+    async allSpecies(@Args('page') page?: number) {
         return await this.swapiWrapperService.findAll(this.path, page);
     }
 }

@@ -35,6 +35,8 @@ export interface IQuery {
     films(page?: Nullable<number>): Nullable<Films> | Promise<Nullable<Films>>;
     planet(id: number): Nullable<Planet> | Promise<Nullable<Planet>>;
     planets(page?: Nullable<number>): Nullable<Planets> | Promise<Nullable<Planets>>;
+    species(id: number): Nullable<Species> | Promise<Nullable<Species>>;
+    allSpecies(page?: Nullable<number>): Nullable<AllSpecies> | Promise<Nullable<AllSpecies>>;
 }
 
 export interface Planet {
@@ -57,6 +59,29 @@ export interface Planet {
 export interface Planets {
     page?: Nullable<number>;
     data?: Nullable<Nullable<Planet>[]>;
+}
+
+export interface Species {
+    name?: Nullable<string>;
+    classification?: Nullable<string>;
+    designation?: Nullable<string>;
+    average_height?: Nullable<string>;
+    skin_colors?: Nullable<string>;
+    hair_colors?: Nullable<string>;
+    eye_colors?: Nullable<string>;
+    average_lifespan?: Nullable<string>;
+    homeworld?: Nullable<string>;
+    language?: Nullable<string>;
+    people?: Nullable<Nullable<string>[]>;
+    films?: Nullable<Nullable<string>[]>;
+    created?: Nullable<string>;
+    edited?: Nullable<string>;
+    url?: Nullable<string>;
+}
+
+export interface AllSpecies {
+    page?: Nullable<number>;
+    data?: Nullable<Nullable<Species>[]>;
 }
 
 type Nullable<T> = T | null;
