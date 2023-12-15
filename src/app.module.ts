@@ -14,6 +14,7 @@ import { StarshipsModule } from './starships/starships.module';
 import { PlanetsModule } from './planets/planets.module';
 import { SwapiWrapperModule } from './swapi-wrapper/swapi-wrapper.module';
 import { HttpExtensionModule } from './http-extension/http-extension.module';
+import { PeopleModule } from './people/people.module';
 
 @Module({
   imports: [
@@ -36,7 +37,8 @@ import { HttpExtensionModule } from './http-extension/http-extension.module';
     StarshipsModule,
     PlanetsModule,
     SwapiWrapperModule,
-    HttpExtensionModule
+    HttpExtensionModule,
+    PeopleModule
   ],
   controllers: [AppController],
   providers: [AppService],

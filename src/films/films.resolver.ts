@@ -23,7 +23,10 @@ export class FilmsResolver {
     }
 
     @Query()
-    async uniqueWordOccurances() {
-        return await this.filmsService.countWordsInOpeningCrawl();
+    async uniqueWordOccurancesAndMostPopularCharacters() {
+        return {
+            mostPopularCharacters: await this.filmsService.findMostPopularCharacterInOpenings(),
+            uniqueWordOccurances: await this.filmsService.countWordsInOpeningCrawl()
+        }
     }
 }
