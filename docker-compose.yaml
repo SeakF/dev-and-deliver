@@ -10,12 +10,14 @@ services:
       - dev_and_deliver
 
   cache:
-    image: redis:7.2.3-alpine
+    image: mongo:latest
+    container_name: mongo_cache
     ports:
-      - '6379:6379'
-    command: ['redis-server', '--save', '60 1']
-    networks:
-      - dev_and_deliver
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: dev_and_deliver
 
 networks:
   dev_and_deliver:

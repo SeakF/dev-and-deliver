@@ -1,9 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
-// import { CacheModule } from '@nestjs/cache-manager';
-// import type { RedisClientOptions } from 'redis';
-// import { redisStore } from 'cache-manager-redis-yet';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { join } from 'path';
@@ -25,12 +22,6 @@ import { PeopleModule } from './people/people.module';
         path: join(process.cwd(), 'src/graphql.ts'),
       }
     }),
-    // CacheModule.register<RedisClientOptions>({
-    //   store: redisStore,
-    //   isGlobal: true,
-    //   ttl: 60 * 60 * 24,
-    //   url: 'redis://cache:6379' // replace it later with env value
-    // }),
     FilmsModule,
     SpeciesModule,
     VehiclesModule,
