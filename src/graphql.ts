@@ -39,6 +39,8 @@ export interface IQuery {
     allSpecies(page?: Nullable<number>): Nullable<AllSpecies> | Promise<Nullable<AllSpecies>>;
     starship(id: number): Nullable<Starship> | Promise<Nullable<Starship>>;
     starships(page?: Nullable<number>): Nullable<Starships> | Promise<Nullable<Starships>>;
+    vehicle(id: number): Nullable<Vehicle> | Promise<Nullable<Vehicle>>;
+    vehicles(page?: Nullable<number>): Nullable<Vehicles> | Promise<Nullable<Vehicles>>;
 }
 
 export interface Planet {
@@ -109,6 +111,30 @@ export interface Starship {
 export interface Starships {
     page?: Nullable<number>;
     data?: Nullable<Nullable<Starship>[]>;
+}
+
+export interface Vehicle {
+    name?: Nullable<string>;
+    model?: Nullable<string>;
+    manufacturer?: Nullable<string>;
+    cost_in_credits?: Nullable<string>;
+    length?: Nullable<string>;
+    max_atmosphering_speed?: Nullable<string>;
+    crew?: Nullable<string>;
+    passengers?: Nullable<string>;
+    cargo_capacity?: Nullable<string>;
+    consumables?: Nullable<string>;
+    vehicle_class?: Nullable<string>;
+    pilots?: Nullable<Nullable<string>[]>;
+    films?: Nullable<Nullable<string>[]>;
+    created?: Nullable<string>;
+    edited?: Nullable<string>;
+    url?: Nullable<string>;
+}
+
+export interface Vehicles {
+    page?: Nullable<number>;
+    data?: Nullable<Nullable<Vehicle>[]>;
 }
 
 type Nullable<T> = T | null;
