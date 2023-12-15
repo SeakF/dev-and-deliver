@@ -1,6 +1,6 @@
 import { Args, Resolver, Query } from '@nestjs/graphql';
-import { SwapiWrapperService } from 'src/swapi-wrapper/swapi-wrapper.service';
-import { UrlPath } from 'src/swapi-wrapper/swapi-wrapper.service';
+import { SwapiWrapperService } from '../swapi-wrapper/swapi-wrapper.service';
+import { UrlPath } from '../swapi-wrapper/swapi-wrapper.service';
 
 @Resolver()
 export class PlanetsResolver {

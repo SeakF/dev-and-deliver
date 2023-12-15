@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { HttpExtensionService } from 'src/http-extension/http-extension.service';
+import { HttpExtensionService } from '../http-extension/http-extension.service';
 
 export type UrlPath = 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles';
 
@@ -11,7 +11,8 @@ export class SwapiWrapperService {
         const response = await this.httpClient.instance.get(`${path}/?page=${page}`);
         return {
             page: page,
-            data: response?.data?.results
+            data: response?.data?.results,
+            isNextPage: response?.data?.next,
         };
     }
 

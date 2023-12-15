@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { SwapiWrapperModule } from 'src/swapi-wrapper/swapi-wrapper.module';
+import { SwapiWrapperModule } from '../swapi-wrapper/swapi-wrapper.module';
 import { StarshipsResolver } from './starships.resolver';
 
 @Module({

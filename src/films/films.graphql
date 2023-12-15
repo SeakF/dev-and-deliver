@@ -23,4 +23,5 @@ type Films {
 type Query {
   film(id: Int!): Film
   films(page: Int): Films
+  uniqueWordOccurances: [String]
 }
