@@ -4,10 +4,8 @@ import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
-    HttpModule.registerAsync({
-      useFactory: async () => ({
-        baseURL: 'https://swapi.dev/api/', // replace later with env value
-      })
+    HttpModule.register({
+      baseURL: 'https://swapi.dev/api/'
     })
   ],
   providers: [HttpExtensionService, Logger],
