@@ -5,10 +5,10 @@ import { HttpModule } from '@nestjs/axios';
 @Module({
   imports: [
     HttpModule.register({
-      baseURL: 'https://swapi.dev/api/'
-    })
+      baseURL: 'https://swapi.dev/api/',
+    }),
   ],
   providers: [HttpExtensionService, Logger],
-  exports: [HttpExtensionService]
+  exports: [HttpExtensionService],
 })
 export class HttpExtensionModule {}

@@ -10,10 +10,10 @@ class SwapiWrapperServiceMock {
     const mockResponse = {
       data: [
         { opening_crawl: 'It is a\r Darth Vader dark time... Luke Skywalker' },
-        { opening_crawl: 'It\r\n is a Luke Skywalker period of\n civil war.' }
+        { opening_crawl: 'It\r\n is a Luke Skywalker period of\n civil war.' },
       ],
       isNextPage: false,
-    }
+    };
 
     return Promise.resolve(mockResponse);
   }
@@ -34,7 +34,7 @@ describe('FilmsService', () => {
       providers: [
         FilmsService,
         { provide: SwapiWrapperService, useClass: SwapiWrapperServiceMock },
-        { provide: PeopleService, useClass: PeopleServiceMock }
+        { provide: PeopleService, useClass: PeopleServiceMock },
       ],
     }).compile();
 
@@ -49,16 +49,33 @@ describe('FilmsService', () => {
     jest
       // service as any cuz jest cannot spy on private methods
       .spyOn(service as any, 'getAllOpeningCrawls')
-      .mockResolvedValue(['It is a Darth Vader dark time... Luke Skywalker', 'It is a Luke Skywalker period of civil war.']);
+      .mockResolvedValue([
+        'It is a Darth Vader dark time... Luke Skywalker',
+        'It is a Luke Skywalker period of civil war.',
+      ]);
 
     const result = await service.countWordsInOpeningCrawl();
 
-    expect(result).toEqual(['it 2', 'is 2', 'a 2', 'darth 1', 'vader 1', 'dark 1', 'time 1', 'luke 2', 'skywalker 2', 'period 1', 'of 1', 'civil 1', 'war 1']);
+    expect(result).toEqual([
+      'it 2',
+      'is 2',
+      'a 2',
+      'darth 1',
+      'vader 1',
+      'dark 1',
+      'time 1',
+      'luke 2',
+      'skywalker 2',
+      'period 1',
+      'of 1',
+      'civil 1',
+      'war 1',
+    ]);
   });
 
   it('should find most popular character in films openings', async () => {
     const result = await service.findMostPopularCharacterInOpenings();
 
     expect(result).toEqual(['Luke Skywalker']);
-  })
+  });
 });

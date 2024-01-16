@@ -4,6 +4,6 @@ import { VehiclesResolver } from './vehicles.resolver';
 
 @Module({
   imports: [SwapiWrapperModule],
-  providers: [VehiclesResolver]
+  providers: [VehiclesResolver],
 })
 export class VehiclesModule {}

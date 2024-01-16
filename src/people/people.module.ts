@@ -5,6 +5,6 @@ import { SwapiWrapperModule } from '../swapi-wrapper/swapi-wrapper.module';
 @Module({
   imports: [SwapiWrapperModule],
   providers: [PeopleService],
-  exports: [PeopleService]
+  exports: [PeopleService],
 })
 export class PeopleModule {}

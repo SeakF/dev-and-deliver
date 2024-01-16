@@ -9,7 +9,7 @@ describe('PeopleService', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [SwapiWrapperModule],
       providers: [PeopleService],
-      exports: [PeopleService]
+      exports: [PeopleService],
     }).compile();
 
     service = module.get<PeopleService>(PeopleService);

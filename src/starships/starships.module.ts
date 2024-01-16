@@ -4,6 +4,6 @@ import { StarshipsResolver } from './starships.resolver';
 
 @Module({
   imports: [SwapiWrapperModule],
-  providers: [StarshipsResolver]
+  providers: [StarshipsResolver],
 })
 export class StarshipsModule {}
