@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:dind
+        ports:
+          - 2375:2375
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build the Docker image
+      run: docker build -t dev-and-deliver:$(date +%s) --file Dockerfile .
+      
+    - name: Run Docker container
+      run: docker-compose up -d
+      
+    - name: Test Docker container
+      run: docker exec dev-and-deliver-app-1 npm run test
+
+    - name: Stop and remove Docker container
+      run: docker-compose down
