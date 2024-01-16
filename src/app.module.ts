@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { join } from 'path';
 import { FilmsModule } from './films/films.module';
 import { SpeciesModule } from './species/species.module';
@@ -20,7 +18,7 @@ import { PeopleModule } from './people/people.module';
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
-      }
+      },
     }),
     FilmsModule,
     SpeciesModule,
@@ -29,9 +27,9 @@ import { PeopleModule } from './people/people.module';
     PlanetsModule,
     SwapiWrapperModule,
     HttpExtensionModule,
-    PeopleModule
+    PeopleModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

@@ -12,11 +12,11 @@ describe('HttpExtensionService', () => {
         HttpModule.registerAsync({
           useFactory: async () => ({
             baseURL: 'https://swapi.dev/api/',
-          })
-        })
+          }),
+        }),
       ],
       providers: [HttpExtensionService, Logger],
-      exports: [HttpExtensionService]
+      exports: [HttpExtensionService],
     }).compile();
 
     service = module.get<HttpExtensionService>(HttpExtensionService);

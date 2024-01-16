@@ -4,7 +4,7 @@ import { HttpExtensionModule } from '../http-extension/http-extension.module';
 import { HttpExtensionService } from '../http-extension/http-extension.service';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
-class HttpExtensionServiceMock {};
+class HttpExtensionServiceMock {}
 
 const cacheManagerMock = {
   get: jest.fn(),
@@ -22,7 +22,7 @@ describe('SwapiWrapperService', () => {
         { provide: HttpExtensionService, useClass: HttpExtensionServiceMock },
         { provide: CACHE_MANAGER, useValue: cacheManagerMock },
       ],
-      exports: [SwapiWrapperService]
+      exports: [SwapiWrapperService],
     }).compile();
 
     service = module.get<SwapiWrapperService>(SwapiWrapperService);

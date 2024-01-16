@@ -3,32 +3,33 @@ import { HttpService } from '@nestjs/axios';
 import axiosRetry from 'axios-retry';
 import { AxiosInstance } from 'axios';
 
-
 @Injectable()
 export class HttpExtensionService {
-    private httpInstance: AxiosInstance;
+  private httpInstance: AxiosInstance;
 
-    constructor(
-        private readonly httpService: HttpService,
-        private readonly logger: Logger
-    ) {
-        axiosRetry(this.httpService.axiosRef, {
-            retries: 3,
-            onRetry: (retryCount, error) => {
-                this.logger.error(
-                    `${retryCount} swapi ${error?.config?.url} error: ${JSON.stringify(error?.response?.data)}`  
-                )
-            },
-            retryDelay: axiosRetry.exponentialDelay,
-            retryCondition: (error) => {
-                return error.response?.status !== 404
-            },
-        })
-        
-        this.httpInstance = this.httpService.axiosRef;
-    }
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly logger: Logger,
+  ) {
+    axiosRetry(this.httpService.axiosRef, {
+      retries: 3,
+      onRetry: (retryCount, error) => {
+        this.logger.error(
+          `${retryCount} swapi ${error?.config?.url} error: ${JSON.stringify(
+            error?.response?.data,
+          )}`,
+        );
+      },
+      retryDelay: axiosRetry.exponentialDelay,
+      retryCondition: (error) => {
+        return error.response?.status !== 404;
+      },
+    });
 
-    get instance() {
-        return this.httpInstance;
-    }
+    this.httpInstance = this.httpService.axiosRef;
+  }
+
+  get instance() {
+    return this.httpInstance;
+  }
 }

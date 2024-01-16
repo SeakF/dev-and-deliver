@@ -4,6 +4,6 @@ import { PlanetsResolver } from './planets.resolver';
 
 @Module({
   imports: [SwapiWrapperModule],
-  providers: [PlanetsResolver]
+  providers: [PlanetsResolver],
 })
 export class PlanetsModule {}

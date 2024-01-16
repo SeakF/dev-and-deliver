@@ -9,18 +9,18 @@ import mongoStore from 'cache-manager-mongodb';
     HttpExtensionModule,
     CacheModule.registerAsync({
       useFactory: () => ({
-          store: mongoStore,
-          uri: 'mongodb://root:pass@cache:27017/dev_and_deliver',
-          options: {
-            collection : 'cacheManager',
-            compression : false,
-            poolSize : 5,
-            autoReconnect: true
-          }
+        store: mongoStore,
+        uri: 'mongodb://root:pass@cache:27017/dev_and_deliver',
+        options: {
+          collection: 'cacheManager',
+          compression: false,
+          poolSize: 5,
+          autoReconnect: true,
+        },
       }),
-    })
+    }),
   ],
   providers: [SwapiWrapperService],
-  exports: [SwapiWrapperService]
+  exports: [SwapiWrapperService],
 })
 export class SwapiWrapperModule {}

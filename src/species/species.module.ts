@@ -4,6 +4,6 @@ import { SpeciesResolver } from './species.resolver';
 
 @Module({
   imports: [SwapiWrapperModule],
-  providers: [SpeciesResolver]
+  providers: [SpeciesResolver],
 })
 export class SpeciesModule {}

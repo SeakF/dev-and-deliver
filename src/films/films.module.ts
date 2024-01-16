@@ -6,6 +6,6 @@ import { PeopleModule } from 'src/people/people.module';
 
 @Module({
   imports: [SwapiWrapperModule, PeopleModule],
-  providers: [FilmsResolver, FilmsService]
+  providers: [FilmsResolver, FilmsService],
 })
 export class FilmsModule {}
